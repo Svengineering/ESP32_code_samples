@@ -1,4 +1,7 @@
 #include <Arduino.h>
+#include <morse_code.h>
+
+
 
 void setup() {
 
@@ -25,6 +28,7 @@ void setup() {
 
 
 void loop() {
+
   int off_time_ms = 500;
   int on_time_ms = 100;
 
@@ -54,5 +58,17 @@ void loop() {
   Serial.printf("%s\n", str);
 
   //TODO: translate input into morse code...
+  std::string tomorse = "main.cpp";
+  char* morse_code[10];
+
+  //convert to lower case
+  transform(tomorse.begin(), tomorse.end(), tomorse.begin(), ::tolower);
+
+
+    for (auto it = tomorse.cbegin() ; it != tomorse.cend(); ++it) {
+        Serial.printf("%s#", morse_code_map.at(*it).c_str());
+        
+    }
+
 
 }
